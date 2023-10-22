@@ -1,0 +1,47 @@
+Algorithm:
+-----------
+
+1. Begin with a Java class named SelectionSort.
+2. Create functions to display the array and to perform the Selection Sort operation.
+3. Implement a function to find the smallest element in the unsorted portion of the array and swap it with the first unsorted element.
+4. Utilize a nested loop to traverse through the array and perform the selection sort operation.
+5. Display the sorted array after the sorting process.
+6. Implement the main function to take user input for the array size and elements, and to call the necessary functions for performing the selection sort.
+
+Pseudo-code:
+------------
+
+class SelectionSort
+    Initialize Scanner object 's'
+
+    function display(arr[], size)
+        Print "Array:"
+        for i from 0 to size - 1
+            Print "|arr[i]|"
+
+    function selection(arr[], size)
+        Initialize variables 'small', 'index' 
+        for i from 0 to size - 1
+            Set 'small' to 'arr[i]'
+            Set 'index' to 'i'
+            for j from i + 1 to size - 1
+                if 'arr[j]' is less than 'small'
+                    Set 'small' to 'arr[j]'
+                    Set 'index' to 'j'
+            Swap 'arr[index]' with 'arr[i]'
+
+        Call function 'display' with parameters 'arr' and 'size'
+
+    function main()
+        Print "Enter total number of elements"
+        Read 'size' from user input
+        Create object 'o' of type 'SelectionSort'
+        Initialize array 'arr' of size 'size'
+
+        Print "Enter the elements"
+        for i from 0 to size - 1
+            Read 'arr[i]' from user input
+
+        Call function 'display' with parameters 'arr' and 'size'
+        Print "Selection Sort:"
+        Call function 'selection' with parameters 'arr' and 'size'
