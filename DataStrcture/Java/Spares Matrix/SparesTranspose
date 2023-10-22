@@ -1,0 +1,63 @@
+Algorithm:
+Start with the given matrix arr.
+Traverse the entire matrix and count the number of non-zero elements to determine the size of the sparse matrix.
+Initialize the sparse matrix with the appropriate dimensions.
+Convert the original matrix to a sparse matrix, storing the non-zero elements along with their corresponding row and column indices.
+Display the sparse matrix.
+Find the transpose of the sparse matrix by interchanging the row and column indices while keeping the non-zero elements intact.
+Display the transpose of the sparse matrix.
+
+
+Pseudo-code:
+
+function NonZero(matrix)
+    count = 0
+    for i = 0 to matrix.rows
+        for j = 0 to matrix.columns
+            if matrix[i][j] is not 0
+                count++
+    return count
+
+function display(matrix)
+    for i = 0 to matrix.rows
+        for j = 0 to matrix.columns
+            print matrix[i][j]
+        print new line
+
+function main()
+    matrix = {{0, 0, 2}, {0, 0, 0}, {7, 3, 0}, {0, 0, 0}, {4, 0, 7}, {0, 0, 0}, {9, 0, 0}}
+    display("Matrix", matrix)
+
+    count = NonZero(matrix)
+    sparseMatrix = new int[count+1][3]
+
+    sparseMatrix[0][0] = matrix.rows
+    sparseMatrix[0][1] = matrix.columns
+    sparseMatrix[0][2] = count
+
+    k = 1
+    for i = 0 to matrix.rows
+        for j = 0 to matrix.columns
+            if matrix[i][j] is not 0
+                sparseMatrix[k][0] = i
+                sparseMatrix[k][1] = j
+                sparseMatrix[k][2] = matrix[i][j]
+                k++
+
+    display("Sparse Matrix", sparseMatrix)
+
+    transposeSparseMatrix = new int[count+1][3]
+    transposeSparseMatrix[0][0] = sparseMatrix[0][1]
+    transposeSparseMatrix[0][1] = sparseMatrix[0][0]
+    transposeSparseMatrix[0][2] = sparseMatrix[0][2]
+
+    x = 1
+    for i = 0 to count
+        for j = 1 to count
+            if sparseMatrix[j][1] is equal to i
+                transposeSparseMatrix[x][0] = sparseMatrix[j][1]
+                transposeSparseMatrix[x][1] = sparseMatrix[j][0]
+                transposeSparseMatrix[x][2] = sparseMatrix[j][2]
+                x++
+
+    display("Transpose of Sparse Matrix", transposeSparseMatrix)
